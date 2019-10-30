@@ -3,7 +3,7 @@ void setup()
 {
 	size(300,300);
   loop();
-  bob = new Particle[1000];
+  bob = new Particle[100];
   for(int j = 0; j < bob.length; j++){
     bob[j] = new Particle();
   }
@@ -20,19 +20,20 @@ class Particle
 {
 	double myX, myY, myColor, myAngle, mySpeed;
   Particle(){
-    myX = 150;
-    myY = 150;
+    myX = myY = 150;
     myColor = 255;
-    myAngle = (Math.random()*360);
-    mySpeed = (Math.random()*100);
+    myAngle = Math.random()*2*Math.PI;
+    mySpeed = Math.random()*2;
 }
 void move(){
-  myX = myX + Math.cos(myAngle * mySpeed);
-  myY = myY + Math.sin(myAngle * mySpeed);
+  myX = myX + Math.cos(myAngle) * mySpeed;
+  myY = myY + Math.sin(myAngle) * mySpeed;
   }
 void show(){
   fill(255);
-  ellipse((float)myX, (float)myY, 5, 5);
+  rect((float)myX, (float)myY, 5, 20);
+
+  
   }
 }
 class OddballParticle //inherits from Particle

@@ -31,6 +31,8 @@ void move(){
   myY = myY + Math.sin(myAngle) * mySpeed;
   if((myX > 500 || myY > 500) || (myY < 0 || myX < 0)){
     myX=myY=250;
+    myAngle = Math.random()*2*Math.PI;
+
   }
 } 
 void show(){
@@ -39,19 +41,26 @@ void show(){
   }
 }
 class OddballParticle extends Particle{
-  double nX, nY;
+  double nX, nY, myColor, myAngle, mySpeed;
   OddballParticle(){
     nX = 250;
     nY = 250; 
+    myColor = color(0,(int)(Math.random()*100)+100, (int)(Math.random()*150)+100);
+    myAngle = Math.random()*2*Math.PI;
+    mySpeed = Math.random()*5 + 5;
   }
   void move(){
-    nX = nX + Math.random()*10-5;
-    nY = nY + Math.random()*10-5; 
+    nX = nX + Math.cos(myAngle) * mySpeed;
+    nY = nY + Math.sin(myAngle) * mySpeed;
     if((nX > 500 || nY > 500) || (nY < 0 || nX < 0)){
-      nX=nY=250;
-    }
+    nX=nY=250;
+    myAngle = Math.random()*2*Math.PI;
+    
+  }
+    
   }
   void show(){
-    ellipse((float)nX,(float)nY, 100, 100);
+    
+    ellipse((float)nX,(float)nY, 50, 50);
   }
 }
